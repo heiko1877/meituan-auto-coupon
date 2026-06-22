@@ -16,4 +16,4 @@ jobs:
       - run: pip install requests
       - env:
           MEITUAN_TOKEN: ${{ secrets.MEITUAN_TOKEN }}
-        run: python scripts/coupon.py
+        run: python coupon.py
