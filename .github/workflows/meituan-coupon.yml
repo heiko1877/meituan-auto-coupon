@@ -1,0 +1,19 @@
+name: 美团自动领券
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 北京时间每天早上8点
+  workflow_dispatch:
+
+jobs:
+  coupon:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests
+      - env:
+          MEITUAN_TOKEN: ${{ secrets.MEITUAN_TOKEN }}
+        run: python scripts/coupon.py
